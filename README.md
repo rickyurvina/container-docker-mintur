@@ -2,7 +2,7 @@
 
 This template has been designed to meet the following requirements:
 
-A backend container with official dockerhub image php: 7.4-fpm PHP version 7.4 and Supervisor with php command artisan queue: work
+A backend container with official dockerhub image php: 8.1-fpm PHP version 8.1 and Supervisor with php command artisan queue: work
 
 A frontend container with the official dockerhub node image: latest and angular CLI
 
@@ -13,9 +13,6 @@ A phpmyadmin container with the official dockerhub image phpmyadmin / phpmyadmin
 A webserver container with the official image of the dockerhub nginx: alpine
 
 ## Init Docker
-
-
-The /docker/backend/supervisor/supervisord.conf file is linked in the backend container. Editing that file is instantly replicated to the container
 
 First installation
 
