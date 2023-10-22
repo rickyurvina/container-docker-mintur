@@ -4,14 +4,10 @@ services:
     # PHP Service
     backend:
         image: rickyurvina/apiminturismo
-        # image: apiminturismo
         container_name: "${PROJECT_NAME}_backend"
         tty: true
         environment:
             SERVICE_NAME: backend
-            PHP_MEMORY_LIMIT: 512M 
-            PHP_INI_UPLOAD_MAX_FILESIZE: 50M
-            PHP_INI_POST_MAX_SIZE: 50M
         volumes:
             - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
         networks:
@@ -19,8 +15,7 @@ services:
 
     # Frontend Service
     frontend:
-        image: rickyurvina/frontminturism
-        # image: frontminturismo
+        image: rickyurvina/frontminturismo
         container_name: "${PROJECT_NAME}_frontend"
         volumes: 
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
@@ -34,7 +29,6 @@ services:
         image: mysql:latest
         container_name: "${PROJECT_NAME}_mysql"
         tty: true
-        command: --max_allowed_packet=134217728
         environment:
             MYSQL_USER: ${USER_MYSQL}
             MYSQL_PASSWORD: ${PASS_MYSQL}
@@ -61,8 +55,6 @@ services:
             MYSQL_ROOT_PASSWORD: ${PASS_ROOT_MYSQL}
             MYSQL_ROOT_HOST: '%'
             PMA_HOST: mysql
-            PHP_INI_UPLOAD_MAX_FILESIZE: 50M
-            PHP_INI_POST_MAX_SIZE: 50M
         networks:
             - private
 
@@ -72,10 +64,10 @@ services:
         container_name: "${PROJECT_NAME}_webserver"
         tty: true
         ports:
-            - "9000:80"
+            - "8000:80"
             - "443:443"
         volumes:
-            - ./api-minturismo/:/var/www/backend
+            - ./docker/app/:/var/www/backend
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         networks:
             - private
