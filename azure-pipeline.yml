@@ -1,0 +1,11 @@
+trigger:
+- main  # Puedes cambiar "main" al nombre de tu rama principal si es diferente
+
+pr pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Despliegue
+  steps:
+  - script: docker-compose up -d
+    displayName: 'Desplegar con Docker Compose'
