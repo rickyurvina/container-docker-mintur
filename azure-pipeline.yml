@@ -1,7 +1,7 @@
 trigger:
 - main  # Puedes cambiar "main" al nombre de tu rama principal si es diferente
 
-pr pool:
+pool:
   vmImage: 'ubuntu-latest'
 
 jobs:
